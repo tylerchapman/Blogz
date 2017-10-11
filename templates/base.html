@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Build-A-Blog</title>
+    </head>
+    <body>
+        <div>
+            <a href="/blog">Home</a>
+            <a href="/newpost">Add A New Blog Post</a>
+        </div>
+
+        {% if blog_posts|length == 0 %}
+        <p>No Posts Yet</p>
+        {% else %}
+            <ul>
+                {% for blog in blog_posts %}
+                <li>
+                    <h2>{{blog.title}}</h2>
+                    <p>{{blog.body}}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+    </body>
+</html>
