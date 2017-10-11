@@ -26,7 +26,13 @@ def blog():
     blog_posts = Blog.query.all()
     blog_posts = list(reversed(blog_posts))
 
-    return render_template('base.html', blog_posts=blog_posts)
+    id = request.args.get('id')
+
+    if id != None:
+        blogpost = Blog.query.filter_by(id=id).first()
+        return render_template('base.html', blog_posts=blog_posts, blogpost=blogpost)
+    else:
+        return render_template('base.html', blog_posts=blog_posts)
 
 
 @app.route('/newpost', methods=['POST', 'GET'])

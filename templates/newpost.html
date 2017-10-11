@@ -1,7 +1,30 @@
+<div>
+    <a href="/blog">Home</a>
+    <a href="/newpost">Add A New Blog Post</a>
+</div>
+
 <form action="/newpost" method="post">
-    <label for="title">Title: </label>
-    <input name="title" type="text">
-    <label for="body">New Post: </label>
-    <textarea name="body"></textarea>
-    <input type="submit" value="Submit">
+    <table>
+        <tr>
+            <td>
+                <label for="title">Title: </label>                    
+            </td>
+            <td>
+                <input name="title" type="text">        
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="body">New Post: </label>
+            </td>
+            <td>
+                <textarea name="body"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Submit">                    
+            </td>
+        </tr>
+    </table>
 </form>

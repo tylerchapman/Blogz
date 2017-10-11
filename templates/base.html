@@ -2,25 +2,35 @@
 <html>
     <head>
         <title>Build-A-Blog</title>
-    </head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">    </head>
     <body>
         <div>
             <a href="/blog">Home</a>
             <a href="/newpost">Add A New Blog Post</a>
         </div>
+        <div class="container">
+            <div class="blog-list">
+            {% if blog_posts|length == 0 %}
+            <p>No Posts Yet</p>
+            {% else %}
+                <ul>
+                    {% for blog in blog_posts %}
+                    <li>
+                        <h2><a href="/blog?id={{ blog.id }}" >{{blog.title}}</a></h2>
+                        <p>{{ blog.body[0:20] + "..." }}</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            </div>
 
-        {% if blog_posts|length == 0 %}
-        <p>No Posts Yet</p>
-        {% else %}
-            <ul>
-                {% for blog in blog_posts %}
-                <li>
-                    <h2>{{blog.title}}</h2>
-                    <p>{{blog.body}}</p>
-                </li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+            <div class="blog-post">
+                {%  if blogpost %}
+                <h2>{{blogpost.title}}</h2>
+                <p>{{blogpost.body}}</p>
+                {% endif %}
+            </div>
+        </div>
         
     </body>
 </html>
