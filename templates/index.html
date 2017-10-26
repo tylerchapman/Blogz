@@ -5,10 +5,10 @@
 
 <h1>Blog Users!</h1>
 
-<ul>
+<div class="list-group">
 {% for user in users %}
-    <li><a href="/blog?user={{ user.username }}">{{ user.username }}</a></li>
-    {% endfor %}
-</ul>
+  <a href="/blog?user={{ user.username }}" class="list-group-item">{{ user.username }}</a>
+{% endfor %}
+</div>
 
 {% endblock %}

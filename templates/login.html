@@ -2,29 +2,38 @@
 
 {% block content %}
 <p>If you don't have an account, you may <a href="/signup">register</a> for one</p>
-<form action="/login" method="post">
-    <table>
-        <tr>
-            <td>
-                <label for="username">Username:</label>
-            </td>
-            <td>
-                <input name="username" type="text" value="{{ username }}">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <label for="password">Password:</label>
-            </td>
-            <td>
-                <input name="password" type="password">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input type="submit" value="Login">
-            </td>
-        </tr>
-    </table>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<!-- {% for message in messages %} -->
+<h3 id="wrong_login">{{ message }}</h3>
+<!-- {% endfor %} -->
+{% endif %}
+{% endwith %}
+<form action="/login" method="post" class="form-horizontal">
+  <table>
+      <tr>
+        <td>
+            <label for="username">Username:</label>
+        </td>
+        <td>
+            <input name="username" type="text" value="{{ username }}">
+        </td>
+      </tr>
+      <tr>
+        <td>
+            <label for="password">Password:</label>
+        </td>
+        <td>
+            <input name="password" type="password">
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+            <input type="submit" class="btn btn-default" value="Login">
+        </td>
+      </tr>
+  </table>
 </form>
 {% endblock %}

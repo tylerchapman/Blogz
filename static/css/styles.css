@@ -6,6 +6,6 @@ body {
   background-color: beige;
 }
 
-#duplicate_flash {
+#duplicate_flash, #wrong_login {
   color: red;
 }
