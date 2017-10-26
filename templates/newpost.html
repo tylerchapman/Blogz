@@ -1,8 +1,6 @@
-<div>
-    <a href="/blog">Home</a>
-    <a href="/newpost">Add A New Blog Post</a>
-</div>
+{% extends "base.html" %}
 
+{% block content %}
 <form action="/newpost" method="post">
     <table>
         <tr>
@@ -28,3 +26,4 @@
         </tr>
     </table>
 </form>
+{% endblock %}

@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="blog-list">
+    {% if blog_posts|length == 0 %}
+    <p>No Posts Yet</p>
+    {% else %}
+        <ul>
+            {% for blog in blog_posts %}
+            <li>
+                <h2><a href="/blog?id={{ blog.id }}" >{{blog.title}}</a></h2>
+                <p>{{ blog.body[0:20] + "..." }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    </div>
+
+    <div class="blog-post">
+        {%  if blogpost %}
+        <h2>{{blogpost.title}}</h2>
+        <p>{{blogpost.body}}</p>
+        {% endif %}
+    </div>
+</div>
+
+
+@app.route('/blog', methods=['POST', 'GET'])
+def blog():
+
+    blog_posts = Blog.query.all()
+    blog_posts = list(reversed(blog_posts))
+
+    id = request.args.get('id')
+
+    if id != None:
+        blogpost = Blog.query.filter_by(id=id).first()
+        return render_template('base.html', blog_posts=blog_posts, blogpost=blogpost)
+    else:
+        return render_template('base.html', blog_posts=blog_posts)
